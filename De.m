@@ -1,9 +1,9 @@
 function [dfxs, ers] = De(f, df, xs, hs)
 %{  
 einseitige Differenzenquotiens
+Status: complete
 Task: 
     return deriviative of a f(x) on a specific x with various h
-Status: in progress
 Parameter:
     f       function f(x) with symbolic variable x
     df      deriviative of f(x) with symbolic variable x
