@@ -14,13 +14,28 @@ Task:
 %}
 
 % Parameter
-xs = linspace(-pi, pi, 6);
-hs = linspace(100*eps, 2*pi, 21);
-
+xs = linspace(-pi, pi, 7);
+hs = linspace(100*eps, 2*pi, 7);
 syms x;
-f1 = symfun(sin(x), x);
-df1 = symfun(cos(x), x);
 
+% functions f(x)s
+f1 = symfun(sin(x), x);
+f2 = symfun(exp(x), x);
+
+% d/dx f(x)
+df1 = symfun(cos(x), x);
+df2 = symfun(exp(x), x);
+
+%-----------------------------------------
+% De
+%-----------------------------------------
+%Values
 [dfxs_sin, ers_sin] = De(f1, df1, xs, hs);
-plotall(dfxs_sin, xs, 'm', 'sin(x) ');
-plotall(ers_sin, hs, 'n');
+[dfxs_exp, ers_exp] = De(f2, df2, xs, hs);
+%Plots
+    % Function
+    plotall(dfxs_sin, xs, hs, 'm', 'd/dx sin(x)', 'x', 'cos(x)', 'h = ', );
+    plotall(dfxs_exp, xs, hs, 'm', 'd/dx exp(x)', 'x', 'exp(x)', 'h = ');
+    % Errors
+    plotall(ers_sin, hs, xs,'n', 'absolute error of d/dx sin(x)', 'h', 'abs. error', 'x = ');
+    plotall(ers_exp, hs, xs,'n', 'absolute error of d/dx exp(x)', 'h', 'abs. error', 'x = ');

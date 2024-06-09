@@ -15,12 +15,27 @@ Task:
 
 % Parameter
 xs = linspace(-pi, pi, 10);
-hs = linspace(100*eps, 2*pi, 20);
-
+hs = linspace(100*eps, 2*pi, 10);
 syms x;
-f1 = symfun(sin(x), x);
-df1 = symfun(cos(x), x);
 
+% functions f(x)s
+f1 = symfun(sin(x), x);
+f2 = symfun(exp(x), x);
+
+% d/dx f(x)
+df1 = symfun(cos(x), x);
+df2 = symfun(exp(x), x);
+
+%-----------------------------------------
+% De
+%-----------------------------------------
+%Values
 [dfxs_sin, ers_sin] = De(f1, df1, xs, hs);
-plotall(dfxs_sin, xs, hs, 'm', 'd/dx sin(x)', 'x', 'cos(x)', 'h = ');
-plotall(ers_sin, hs, xs,'n', 'absolute error of d/dx sin(x)', 'h', 'abs. error', 'x = ');
+[dfxs_exp, ers_exp] = De(f2, df2, xs, hs);
+%Plots
+    % Function
+    plotall(dfxs_sin, xs, hs, 'm', 'd/dx sin(x)', 'x', 'cos(x)', 'h = ', 'figures/dfx_sin.fig');
+    plotall(dfxs_exp, xs, hs, 'm', 'd/dx exp(x)', 'x', 'exp(x)', 'h = ', 'figures/dfx_exp.fig');
+    % Errors
+    plotall(ers_sin, hs, xs,'n', 'absolute error of d/dx sin(x)', 'h', 'abs. error', 'x = ', 'figures/tol_sin.fig');
+    plotall(ers_exp, hs, xs,'n', 'absolute error of d/dx exp(x)', 'h', 'abs. error', 'x = ', 'figures/tol_exp.fig');

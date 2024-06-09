@@ -1,8 +1,6 @@
-function plotall(mat_ys, xs, lgds, iover, ttl, xax, yax, lgd_pretext)
+function fig = plotall(mat_ys, xs, lgds, iover, ttl, xax, yax, lgd_pretext, filename)
     lgdi_max = length(lgds);
-    xi_max = length(xs);
-    disp(xi_max)
-    figure;
+    fig = figure;
         hold on;
         for lgdi = 1: lgdi_max
             if iover == 'n'
@@ -19,4 +17,6 @@ function plotall(mat_ys, xs, lgds, iover, ttl, xax, yax, lgd_pretext)
         ylabel(yax);
         legend;
         hold off;
+        savefig(filename);
+        close;
 end
