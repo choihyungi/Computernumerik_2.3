@@ -1,4 +1,4 @@
-function fig = plotall(mat_ys, xs, lgds, iover, ttl, xax, yax, lgd_pretext, filename)
+function fig = plotall(mat_ys, xs, lgds, iover, pstrt, pend, ttl, xax, yax, lgd_pretext, filename)
 %{
 Status: complete
 Task:
@@ -25,7 +25,7 @@ Return:
                 ys = mat_ys(lgdi,:);
             end
             txt = strcat(lgd_pretext, string(lgds(lgdi)));
-            plot(xs, ys, '-o', DisplayName=txt);
+            plot(xs(pstrt:pend), ys(pstrt:pend), '-o', DisplayName=txt);
             
         end
         title(ttl);
