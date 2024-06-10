@@ -12,8 +12,8 @@ Task:
     
 %}
 % Parameter
-xs = linspace(0, pi, 10);
-hs = linspace(eps, 10^9*eps, 100);
+xs = linspace(-pi, pi, 10);
+hs = linspace(eps, 10^9*eps, 20); %10^9*eps
 disp('Parameter: ok');
 % functions f(x)s
 syms x;
@@ -39,25 +39,38 @@ disp('De-values: ok');
 [dz_dfxs_f1, dz_ers_f1] = Dz(f1, df1, xs, hs);
 [dz_dfxs_f2, dz_ers_f2] = Dz(f2, df2, xs, hs);
 disp('Dz-values: ok');
+
+%-----------------------------------------
+% Dexcel, Linearkombination aus Dz
+%-----------------------------------------
+[dexcel_dfxs_f1, dexcel_ers_f1] = Dexcel(f1,df1, dz_dfxs_f1,xs,hs);
+[dexcel_dfxs_f2, dexcel_ers_f2] = Dexcel(f2,df2, dz_dfxs_f2,xs,hs);
+disp('Dexcel-values: ok');
     
 %-----------------------------------------
 %Plots
 %-----------------------------------------
 %Function1
     %function
-    %plotall(de_dfxs_f1, xs, hs, 'm', pstart, pend, strcat('De: d/dx ', string(f1)), 'x', string(df1), strcat('d/dx ', string(f1), ', h = '), 'figures/de_dfx_f1.fig');
-    %plotall(dz_dfxs_f1, xs, hs, 'm', pstart, pend, strcat('Dz: d/dx ', string(f1)), 'x', string(df1), strcat('d/dx ', string(f1), ', h = '), 'figures/dz_dfx_f1.fig');
+    pstart = 1;
+    pend = length(xs);
+    plotall(de_dfxs_f1, xs, hs, 'm', pstart, pend, strcat('De: d/dx ', string(f1)), 'x', string(df1), strcat('d/dx ', string(f1), ', h = '), 'figures/de_dfx_f1.fig');
+    plotall(dz_dfxs_f1, xs, hs, 'm', pstart, pend, strcat('Dz: d/dx ', string(f1)), 'x', string(df1), strcat('d/dx ', string(f1), ', h = '), 'figures/dz_dfx_f1.fig');
     %error
-    pstart = 5;
+    pstart = 3;
     pend = length(hs);
-    plotall(de_ers_f1, hs, xs,'n', pstart, pend,strcat('De: abs error of ', string(f1)), 'h', 'abs. error', 'x = ', 'figures/de_abserr_f1.fig');
+    plotall(de_ers_f1, hs, xs,'n', pstart, pend, strcat('De: abs error of ', string(f1)), 'h', 'abs. error', 'x = ', 'figures/de_abserr_f1.fig');
     plotall(dz_ers_f1, hs, xs,'n', pstart, pend, strcat('Dz: abs error of ', string(f1)), 'h', 'abs. error', 'x = ', 'figures/dz_abserr_f1.fig');
+    plotall(dexcel_ers_f1, hs, xs,'n', pstart, pend, strcat('Dexcel: abs error of ', string(f1)), 'h', 'abs. error', 'x = ', 'figures/dexcel_abserr_f1.fig');
 %Function2
     %function
-    %plotall(de_dfxs_f2, xs, hs, 'm', pstart, pend, strcat('De: d/dx ', string(f2)), 'x', string(df2), strcat('d/dx ', string(f2), ', h = '), 'figures/de_dfx_f2.fig');
-    %plotall(dz_dfxs_f2, xs, hs, 'm', pstart, pend, strcat('Dz: d/dx ', string(f2)), 'x', string(df2), strcat('d/dx ', string(f2), ', h = '), 'figures/dz_dfx_f2.fig');
+    pstart = 1;
+    pend = length(xs);
+    plotall(de_dfxs_f2, xs, hs, 'm', pstart, pend, strcat('De: d/dx ', string(f2)), 'x', string(df2), strcat('d/dx ', string(f2), ', h = '), 'figures/de_dfx_f2.fig');
+    plotall(dz_dfxs_f2, xs, hs, 'm', pstart, pend, strcat('Dz: d/dx ', string(f2)), 'x', string(df2), strcat('d/dx ', string(f2), ', h = '), 'figures/dz_dfx_f2.fig');
     %error
-    pstart = 5;
+    pstart = 3;
     pend = length(hs);
     plotall(de_ers_f2, hs, xs,'n', pstart, pend,strcat('De: abs error of ', string(f2)), 'h', 'abs. error', 'x = ', 'figures/de_abserr_f2.fig');
     plotall(dz_ers_f2, hs, xs,'n', pstart, pend, strcat('Dz: abs error of ', string(f2)), 'h', 'abs. error', 'x = ', 'figures/dz_abserr_f2.fig');
+    plotall(dexcel_ers_f2, hs, xs,'n', pstart, pend, strcat('Dexcel: abs error of ', string(f2)), 'h', 'abs. error', 'x = ', 'figures/dexcel_abserr_f2.fig');

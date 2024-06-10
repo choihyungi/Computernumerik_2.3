@@ -11,6 +11,7 @@ Parameter:
     hs      array of h values
 Returns:
     dfxs     2d array of approximated df/dx(x): j...xs, i...hs
+    ers     2d array of absolute errors
 %}
     xi_max = length(xs);
     hi_max = length(hs);
