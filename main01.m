@@ -14,6 +14,8 @@ Task:
 % Parameter
 xs = linspace(-pi, pi, 10);
 hs = linspace(eps, 10^9*eps, 20); %10^9*eps
+xs = linspace(0, pi, 10);
+hs = linspace(eps, 10^9*eps, 100);
 disp('Parameter: ok');
 % functions f(x)s
 syms x;
@@ -73,4 +75,7 @@ disp('Dexcel-values: ok');
     pend = length(hs);
     plotall(de_ers_f2, hs, xs,'n', pstart, pend,strcat('De: abs error of ', string(f2)), 'h', 'abs. error', 'x = ', 'figures/de_abserr_f2.fig');
     plotall(dz_ers_f2, hs, xs,'n', pstart, pend, strcat('Dz: abs error of ', string(f2)), 'h', 'abs. error', 'x = ', 'figures/dz_abserr_f2.fig');
+<<<<<<< HEAD
     plotall(dexcel_ers_f2, hs, xs,'n', pstart, pend, strcat('Dexcel: abs error of ', string(f2)), 'h', 'abs. error', 'x = ', 'figures/dexcel_abserr_f2.fig');
+=======
+>>>>>>> refs/remotes/origin/main
