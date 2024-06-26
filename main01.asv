@@ -50,6 +50,23 @@ disp('Dexcel-values: ok');
 %-----------------------------------------
 %Plots
 %-----------------------------------------
+%Function1
+    %function
+    
+    %error
+    
+    
+%Function2
+    %function
+    pstart = 1;
+    pend = length(xs);
+    
+    %error
+    pstart = 1;
+    pend = length(hs);
+    plotall(de_ers_f2, hs, xs,'n', pstart, pend,strcat('De: abs error of ', string(f2)), 'h', 'abs. error', 'x = ', 'figures/de_abserr_f2.fig');
+    plotall(dz_ers_f2, hs, xs,'n', pstart, pend, strcat('Dz: abs error of ', string(f2)), 'h', 'abs. error', 'x = ', 'figures/dz_abserr_f2.fig');
+    plotall(dexcel_ers_f2, hs, xs,'n', pstart, pend, strcat('Dz: abs error of ', string(f2)), 'h', 'abs. error', 'x = ', 'figures/dexcel_abserr_f2.fig');
 % dfx
 pstart = 1;
 pend = length(xs);
@@ -63,13 +80,9 @@ pend = length(xs);
     plotall(dexcel_dfxs_f2, xs, hs, 'm', pstart, pend, strcat('Dz: d/dx ', string(f2)), 'x', string(df2), strcat('d/dx ', string(f2), ', h = '), 'figures/dexcel_dfx_f2.fig');
 
 % Error
-pstart = 2;
+pstart = 1;
 pend = length(hs);
-    % Function 1
+    %Function 1
     plotall(de_ers_f1, hs, xs,'n', pstart, pend, strcat('De: abs error of ', string(f1)), 'h', 'abs. error', 'x = ', 'figures/de_abserr_f1.fig');
     plotall(dz_ers_f1, hs, xs,'n', pstart, pend, strcat('Dz: abs error of ', string(f1)), 'h', 'abs. error', 'x = ', 'figures/dz_abserr_f1.fig');
     plotall(dexcel_ers_f1, hs, xs,'n', pstart, pend, strcat('Dexcel: abs error of ', string(f1)), 'h', 'abs. error', 'x = ', 'figures/dexcel_abserr_f1.fig');
-    % Function 2
-    plotall(de_ers_f2, hs, xs,'n', pstart, pend,strcat('De: abs error of ', string(f2)), 'h', 'abs. error', 'x = ', 'figures/de_abserr_f2.fig');
-    plotall(dz_ers_f2, hs, xs,'n', pstart, pend, strcat('Dz: abs error of ', string(f2)), 'h', 'abs. error', 'x = ', 'figures/dz_abserr_f2.fig');
-    plotall(dexcel_ers_f2, hs, xs,'n', pstart, pend, strcat('Dz: abs error of ', string(f2)), 'h', 'abs. error', 'x = ', 'figures/dexcel_abserr_f2.fig');
