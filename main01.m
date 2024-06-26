@@ -12,17 +12,18 @@ Task:
     
 %}
 % Parameter
+tol = 1e-8;
 xs = 1;
-hs = linspace(eps, 0.9*10^(-1), 30); %10^9*eps
+hs = linspace(eps, 10^(-1), 100); %10^9*eps
 disp('Parameter: ok');
 % functions f(x)s
 syms x;
-f1 = symfun(sin(x), x);
-f2 = symfun(log(x), x);
+f1 = symfun(sin(x)/x, x);
+f2 = symfun(exp(x), x);
 disp('f(x)s: ok');
 % d/dx f(x)
-df1 = symfun(cos(x), x);
-df2 = symfun(1/x, x);
+df1 = symfun((cos(x)*x-sin(x))/x^2, x);
+df2 = symfun(exp(x), x);
 disp('d/dx f(x): ok');
 %-----------------------------------------
 % De, einseitige Differenzenquotient
@@ -46,6 +47,9 @@ disp('Dz-values: ok');
 [dexcel_dfxs_f1, dexcel_ers_f1] = Dexcel(f1,df1, dz_dfxs_f1,xs,hs);
 [dexcel_dfxs_f2, dexcel_ers_f2] = Dexcel(f2,df2, dz_dfxs_f2,xs,hs);
 disp('Dexcel-values: ok');
+
+
+    
     
 %-----------------------------------------
 %Plots
@@ -80,3 +84,15 @@ disp('Dexcel-values: ok');
     
 combine_figs('figures/de_abserr_f1.fig', 'figures/dz_abserr_f1.fig', 'figures/dexcel_abserr_f1.fig', 'figures/combine_de_dz_abserr_f1.fig')
 combine_figs2('figures/de_abserr_f2.fig', 'figures/dz_abserr_f2.fig', 'figures/dexcel_abserr_f2.fig', 'figures/combine_de_dz_abserr_f2.fig')
+%dexcel_ers_f1 = dexcel_ers_f1(2:end);
+%dexcel_ers_f2 = dexcel_ers_f2(2:end);
+if min(dexcel_ers_f1)>tol
+    disp("tol of 1st function couldn't be reached")
+else
+    disp(min(dexcel_ers_f1))
+end
+if min(dexcel_ers_f2)>tol
+    disp("tol of 2nd function couldn't be reached")
+    else
+    disp(min(dexcel_ers_f2))
+end

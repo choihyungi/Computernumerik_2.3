@@ -70,7 +70,7 @@ function combine_figs(fig1_path, fig2_path, fig3_path, output_path)
     % Add labels, title, and legend
     xlabel('h');
     ylabel('Absoluter Fehler');
-    title('Absoluter Fehler von D_e, D_z und D_{excel} für sin(x)');
+    title('Absoluter Fehler von D_e, D_z und D_{excel} für sin(x)/x');
     legend('D_e', 'D_z', 'D_{excel}'); % Show filenames in legend
 
     hold off;
