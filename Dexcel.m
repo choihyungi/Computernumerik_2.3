@@ -37,7 +37,7 @@ Returns:
             dfx2 = (y22-y21)/(2*h2);
             dfx3 = (y32-y31)/(2*h3);
 
-            dfx = 1/45*(dfx1 - 20*dfx2 + 40*dfx3);
+            dfx = 1/45*(dfx1 - 20*dfx2 + 64*dfx3);
             er = dfx-exact;
 
             dfxs(hi,xi) = dfx;

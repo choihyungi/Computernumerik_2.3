@@ -13,7 +13,7 @@ Task:
 %}
 % Parameter
 xs = linspace(-pi, pi, 10);
-hs = linspace(eps, 10^9*eps, 20); %10^9*eps
+hs = linspace(eps, 10^(-2), 30); %10^9*eps
 disp('Parameter: ok');
 % functions f(x)s
 syms x;
@@ -56,6 +56,7 @@ disp('Dexcel-values: ok');
     pend = length(xs);
     plotall(de_dfxs_f1, xs, hs, 'm', pstart, pend, strcat('De: d/dx ', string(f1)), 'x', string(df1), strcat('d/dx ', string(f1), ', h = '), 'figures/de_dfx_f1.fig');
     plotall(dz_dfxs_f1, xs, hs, 'm', pstart, pend, strcat('Dz: d/dx ', string(f1)), 'x', string(df1), strcat('d/dx ', string(f1), ', h = '), 'figures/dz_dfx_f1.fig');
+    plotall(dexcel_dfxs_f1, xs, hs, 'm', pstart, pend, strcat('Dexcel: d/dx ', string(f1)), 'x', string(df1), strcat('d/dx ', string(f1), ', h = '), 'figures/dexcel_dfx_f1.fig');
     %error
     pstart = 3;
     pend = length(hs);
@@ -68,8 +69,10 @@ disp('Dexcel-values: ok');
     pend = length(xs);
     plotall(de_dfxs_f2, xs, hs, 'm', pstart, pend, strcat('De: d/dx ', string(f2)), 'x', string(df2), strcat('d/dx ', string(f2), ', h = '), 'figures/de_dfx_f2.fig');
     plotall(dz_dfxs_f2, xs, hs, 'm', pstart, pend, strcat('Dz: d/dx ', string(f2)), 'x', string(df2), strcat('d/dx ', string(f2), ', h = '), 'figures/dz_dfx_f2.fig');
+    plotall(dexcel_dfxs_f2, xs, hs, 'm', pstart, pend, strcat('Dz: d/dx ', string(f2)), 'x', string(df2), strcat('d/dx ', string(f2), ', h = '), 'figures/dexcel_dfx_f2.fig');
     %error
     pstart = 3;
     pend = length(hs);
     plotall(de_ers_f2, hs, xs,'n', pstart, pend,strcat('De: abs error of ', string(f2)), 'h', 'abs. error', 'x = ', 'figures/de_abserr_f2.fig');
     plotall(dz_ers_f2, hs, xs,'n', pstart, pend, strcat('Dz: abs error of ', string(f2)), 'h', 'abs. error', 'x = ', 'figures/dz_abserr_f2.fig');
+    plotall(dexcel_ers_f2, hs, xs,'n', pstart, pend, strcat('Dz: abs error of ', string(f2)), 'h', 'abs. error', 'x = ', 'figures/dexcel_abserr_f2.fig');
