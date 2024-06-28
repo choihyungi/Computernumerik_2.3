@@ -9,8 +9,8 @@ Parameter:
     x       x values 
     tol     tolerance of absolute err
 Returns:
-    dfxs    value of df/dx(x)
-    ers     absolute error to exact value
+    dfx_fin value of df/dx(x)
+    er_fin  absolute error to exact value
 %}
 
     df = diff(f,x);
