@@ -1,7 +1,7 @@
 function [dfxs, ers] = Dexcel(f, df, dz_dfxs, xs, hs)
 %{  
 Differenzenquotiens aus Linearkombination
-Status: in progress
+Status: complete
 Task: 
     return deriviative of a f(x) on a specific x with various h
     using a linear kombination of De and Dz

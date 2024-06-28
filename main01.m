@@ -13,7 +13,7 @@ Task:
 %}
 % Parameter
 tol = 1e-8;
-xs = 1;
+xs = 13;
 hs = linspace(eps, 10^(-1), 100); %10^9*eps
 disp('Parameter: ok');
 % functions f(x)s
@@ -47,9 +47,6 @@ disp('Dz-values: ok');
 [dexcel_dfxs_f1, dexcel_ers_f1] = Dexcel(f1,df1, dz_dfxs_f1,xs,hs);
 [dexcel_dfxs_f2, dexcel_ers_f2] = Dexcel(f2,df2, dz_dfxs_f2,xs,hs);
 disp('Dexcel-values: ok');
-
-
-    
     
 %-----------------------------------------
 %Plots
@@ -62,7 +59,7 @@ disp('Dexcel-values: ok');
     plotall(dz_dfxs_f1, xs, hs, 'm', pstart, pend-1, strcat("D_z: d/dx ", string(f1)), 'x', string(df1), strcat('d/dx ', string(f1), ', h = '), 'figures/dz_dfx_f1.fig');
     plotall(dexcel_dfxs_f1, xs, hs, 'm', pstart, pend-1, strcat("D_{excel}: d/dx ", string(f1)), 'x', string(df1), strcat('d/dx ', string(f1), ', h = '), 'figures/dexcel_dfx_f1.fig');
     %error
-    pstart = 3;
+    pstart = 1;
     pend = length(hs);
     plotall(de_ers_f1, hs, xs,'n', pstart, pend-1, strcat("D_e: Absoluter Fehler von ", string(f1)), 'h', 'Absoluter Fehler', 'x = ', 'figures/de_abserr_f1.fig');
     plotall(dz_ers_f1, hs, xs,'n', pstart, pend-1, strcat("D_z: Absoluter Fehler von ", string(f1)), 'h', 'Absoluter Fehler', 'x = ', 'figures/dz_abserr_f1.fig');
@@ -75,7 +72,7 @@ disp('Dexcel-values: ok');
     plotall(dz_dfxs_f2, xs, hs, 'm', pstart, pend-1, strcat("D_z: d/dx ", string(f2)), 'x', string(df2), strcat('d/dx ', string(f2), ', h = '), 'figures/dz_dfx_f2.fig');
     plotall(dexcel_dfxs_f2, xs, hs, 'm', pstart, pend-1, strcat("D_z: d/dx ", string(f2)), 'x', string(df2), strcat('d/dx ', string(f2), ', h = '), 'figures/dexcel_dfx_f2.fig');
     %error
-    pstart = 3;
+    pstart = 1;
     pend = length(hs);
     plotall(de_ers_f2, hs, xs,'n', pstart, pend-1,strcat("D_e: Absoluter Fehler von ", string(f2)), 'h', 'Absoluter Fehler', 'x = ', 'figures/de_abserr_f2.fig');
     plotall(dz_ers_f2, hs, xs,'n', pstart, pend-1, strcat("D_z: Absoluter Fehler von ", string(f2)), 'h', 'Absoluter Fehler', 'x = ', 'figures/dz_abserr_f2.fig');
@@ -86,6 +83,7 @@ combine_figs('figures/de_abserr_f1.fig', 'figures/dz_abserr_f1.fig', 'figures/de
 combine_figs2('figures/de_abserr_f2.fig', 'figures/dz_abserr_f2.fig', 'figures/dexcel_abserr_f2.fig', 'figures/combine_de_dz_abserr_f2.fig')
 %dexcel_ers_f1 = dexcel_ers_f1(2:end);
 %dexcel_ers_f2 = dexcel_ers_f2(2:end);
+%{
 if min(dexcel_ers_f1)>tol
     disp("tol of 1st function couldn't be reached")
 else
@@ -96,3 +94,4 @@ if min(dexcel_ers_f2)>tol
     else
     disp(min(dexcel_ers_f2))
 end
+%}
