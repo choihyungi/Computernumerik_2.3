@@ -3,13 +3,13 @@ function [dfx_fin, er_fin] = return_dfvalue(f, x, tol)
 Wert der ersten Differenz auf x
 Status: complete
 Task: 
-    return value of df/dt(x)
+    return value of df/dx(x)
 Parameter:
     f       function f(x) with symbolic variable x
     x       x values 
     tol     tolerance of absolute err
 Returns:
-    dfxs    value of df/dt(x)
+    dfxs    value of df/dx(x)
     ers     absolute error to exact value
 %}
 
